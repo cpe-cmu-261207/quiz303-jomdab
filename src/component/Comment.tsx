@@ -13,10 +13,11 @@ export const Comment = (data:CommentType) => {
               <p className="font-semibold">{data.username}</p>
               <p>{data.commentText}</p>
               {/* like section (จะไม่แสดงถ้าไม่มีใครไลค์เลย) */}
-              <div className='flex items-center'>
+              {data.likeNum>0?<div className='flex items-center'>
                 <img className='w-4 h-4 mr-1' src='/like.svg'></img>
-                <p className='text-gray-500'>{data.likeNum>0? data.likeNum+" คน":null}</p>
-              </div>
+                <p className='text-gray-500'>{ data.likeNum+" คน"}</p>
+              </div>:null
+              }
             </div>
           </div>
 
