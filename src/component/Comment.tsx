@@ -1,5 +1,6 @@
 
 import { CommentType } from "../data/comments";
+import { Reply } from "./Reply";
 
 export const Comment = (data:CommentType) => {
     return(
@@ -21,13 +22,12 @@ export const Comment = (data:CommentType) => {
 
           {/* replies */}
           {/* ต่างกันตรงที่มี padding มากกว่าเท่านั้น (pl-14) */}
-          <div className="flex p-2 items-start space-x-2 pl-14">
-            <img className="w-10 w-10 rounded-full" src="/profileImages/puppy.jpg"></img>
-            <div className="bg-gray-200 rounded-lg p-2">
-              <p className="font-semibold">หมาน้อย</p>
-              <p>เม้นค้าบ</p>
-            </div>
-          </div>
+          {
+              data.replies.map((x)=>{
+                return <Reply username={x.username} userImagePath={x.userImagePath} commentText={x.commentText} 
+                likeNum={x.likeNum} replies={x.replies}></Reply>
+              })
+          }
 
         </div>
 
